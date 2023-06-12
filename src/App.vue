@@ -1,9 +1,23 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+import Articles from "@/components/Articles.vue";
+</script>
+
+<script>
+
+export default {
+  data() {
+    return {
+      page : 'indexed'
+    };
+  }
+}
 </script>
 
 <template>
+    <Articles v-if="page === 'indexed'" />
+  <!--
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
@@ -15,7 +29,10 @@ import TheWelcome from './components/TheWelcome.vue'
   <main>
     <TheWelcome />
   </main>
+  -->
 </template>
+
+
 
 <style scoped>
 header {
