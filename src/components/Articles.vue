@@ -10,7 +10,7 @@ export default {
   methods: {
     async getAllArticles() {
       const tokenHeader = new Headers();
-      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODY2ODEwMzB9.TntY7p6we6A7-9gTfc0sPFizcfEN2JBzmMjBWmjR82I';
+      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODczNzMxMDB9.-mimtn4oM94oFgZiLUfQ_UGK6Ow01N3emR4ojKhjwZg';
       tokenHeader.append('Authorization', `Bearer ${token}`);
       tokenHeader.append('content-type', 'application/json');
       try {
@@ -18,10 +18,10 @@ export default {
         const data = await fetch(`${apiBaseURL}/articles.json`,
             {
               method: 'GET',
-              //credentials: 'include',
+              credentials: 'include',
               headers: {
-                "Authorization": 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODY2ODEwMzB9.TntY7p6we6A7-9gTfc0sPFizcfEN2JBzmMjBWmjR82I',
-                //"Content-Type": 'application/json'
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": 'application/json'
               },
               mode: 'cors'
             });
