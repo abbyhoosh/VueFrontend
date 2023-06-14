@@ -10,22 +10,24 @@ export default {
   methods: {
     async getAllArticles() {
       const tokenHeader = new Headers();
-      tokenHeader.append('Authorization', 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODY2ODEwMzB9.TntY7p6we6A7-9gTfc0sPFizcfEN2JBzmMjBWmjR82I');
+      const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODY2ODEwMzB9.TntY7p6we6A7-9gTfc0sPFizcfEN2JBzmMjBWmjR82I';
+      tokenHeader.append('Authorization', `Bearer ${token}`);
       tokenHeader.append('content-type', 'application/json');
       try {
         this.articles = 'enters try';
         const data = await fetch(`${apiBaseURL}/articles.json`,
             {
               method: 'GET',
-              credentials: 'include',
+              //credentials: 'include',
               headers: {
                 "Authorization": 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODY2ODEwMzB9.TntY7p6we6A7-9gTfc0sPFizcfEN2JBzmMjBWmjR82I',
-                "Content-Type": 'application/json'
+                //"Content-Type": 'application/json'
               },
-              mode: 'no-cors'
+              mode: 'cors'
             });
         //this.articles = await data.json();
       } catch (e) {
+        this.articles=e;
         console.error(e);
       }
 
