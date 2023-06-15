@@ -1,10 +1,14 @@
+<script setup>
+
+</script>
+
 <script>
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 
 export default {
   data() {
     return {
-      articles: ''
+      articles: [],
     };
   },
   methods: {
@@ -14,7 +18,6 @@ export default {
       tokenHeader.append('Authorization', `Bearer ${token}`);
       tokenHeader.append('content-type', 'application/json');
       try {
-        this.articles = 'enters try';
         const data = await fetch(`${apiBaseURL}/articles.json`,
             {
               method: 'GET',
@@ -25,14 +28,16 @@ export default {
               },
               mode: 'cors'
             });
-        //this.articles = await data.json();
+        this.articles = await data.json();
+        console.log(this.articles);
       } catch (e) {
-        this.articles=e;
         console.error(e);
       }
-
     }
   },
+  mounted() {
+    getAllArticles();
+  }
 }
 </script>
 
@@ -41,15 +46,11 @@ export default {
     Articles
   </header>
 
-  <p>
-    {{ articles }}
-  </p>
-
-
   <button @click="getAllArticles"> get all articles</button>
 
-  <ul>
-  </ul>
+    <div v-for="article in articles"  >
+      {{article.title}}
+    </div>
 
 </template>
 
