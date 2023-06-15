@@ -1,6 +1,9 @@
 <script setup>
 
 import Banner from "@/components/Banner.vue";
+import Header from "@/components/PageHeader.vue";
+import PageHeader from "@/components/PageHeader.vue";
+
 </script>
 
 <script>
@@ -17,20 +20,16 @@ export default {
       const tokenHeader = new Headers();
       const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODczNzMxMDB9.-mimtn4oM94oFgZiLUfQ_UGK6Ow01N3emR4ojKhjwZg';
       tokenHeader.append('Authorization', `Bearer ${token}`);
-     // tokenHeader.append('content-type', 'application/json');
+      tokenHeader.append('content-type', 'application/json');
       try {
         const response = await fetch(`${apiBaseURL}/articles.json`,
             {
               method: 'GET',
               credentials: 'include',
-              headers: {
-                "Authorization": `Bearer ${token}`
-              },
+              headers: tokenHeader,
               mode: 'cors'
             });
-        const finalRes = await response.json();
-        this.posts = finalRes;
-        console.log(this.posts);
+        this.posts = await response.json();
       } catch (e) {
         console.error(e);
       }
@@ -43,24 +42,26 @@ export default {
 </script>
 
 <template>
-  <Banner> </Banner>
-  <header>
-    Articles
-  </header>
+  <Banner/>
+  <PageHeader header="Articles"/>
 
-  <table>
+
+  <table v-for="array in this.posts">
     <tr>
-      <th>Article</th>
+      <th>Title</th>
       <th>Created</th>
       <th>Action</th>
     </tr>
+    <tr>
+      <td> test</td>
+    </tr>
   </table>
 
-    <div v-for="array in this.posts" >
-      <div v-for="article in array">
-        Title: {{article.title}}
-      </div>
+  <div v-for="array in this.posts">
+    <div v-for="article in array">
+      {{ article.title }}
     </div>
+  </div>
 
 </template>
 
