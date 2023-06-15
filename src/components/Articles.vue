@@ -36,7 +36,7 @@ export default {
     }
   },
   mounted() {
-    getAllArticles();
+    this.getAllArticles();
   }
 }
 </script>
@@ -46,9 +46,9 @@ export default {
     Articles
   </header>
 
-  <button @click="getAllArticles"> get all articles</button>
+  {{this.articles}}
 
-    <div v-for="article in articles"  >
+    <div v-for="article in articles" >
       {{article.title}}
     </div>
 
