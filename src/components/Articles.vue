@@ -1,5 +1,6 @@
 <script setup>
 
+import Banner from "@/components/Banner.vue";
 </script>
 
 <script>
@@ -42,9 +43,18 @@ export default {
 </script>
 
 <template>
+  <Banner> </Banner>
   <header>
     Articles
   </header>
+
+  <table>
+    <tr>
+      <th>Article</th>
+      <th>Created</th>
+      <th>Action</th>
+    </tr>
+  </table>
 
     <div v-for="array in this.posts" >
       <div v-for="article in array">
