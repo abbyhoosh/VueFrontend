@@ -50,20 +50,6 @@ export default {
       }
     },
 
-    async editArticle(slug) {
-      try {
-        const response = await fetch( `${apiBaseURL}/articles/edit/${slug}.json`,
-            {
-              method: 'POST',
-              credentials: 'include',
-              headers: tokenHeader,
-              mode: 'cors'
-            });
-      } catch (e) {
-        console.log(e);
-      }
-    },
-
     async deleteArticle(slug) {
       try {
         const response = await fetch( `${apiBaseURL}/articles/delete/${slug}.json`,
