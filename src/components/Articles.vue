@@ -3,6 +3,7 @@
 import Banner from "@/components/Banner.vue";
 import Header from "@/components/PageHeader.vue";
 import PageHeader from "@/components/PageHeader.vue";
+import ArticleRow from "@/components/ArticleRow.vue";
 
 </script>
 
@@ -45,27 +46,30 @@ export default {
   <Banner/>
   <PageHeader header="Articles"/>
 
-
   <table v-for="array in this.posts">
     <tr>
-      <th>Title</th>
+      <th class="left">Title</th>
       <th>Created</th>
       <th>Action</th>
     </tr>
-    <tr>
-      <td> test</td>
-    </tr>
+    <ArticleRow v-for="a in array" :a-title="a.title" :a-created= "a.created.format()" > </ArticleRow>
   </table>
-
-  <div v-for="array in this.posts">
-    <div v-for="article in array">
-      {{ article.title }}
-    </div>
-  </div>
 
 </template>
 
 
 <style>
+table {
+  width: 100%;
+}
+
+th {
+  font-size: 25px;
+}
+
+.left{
+  text-align: left;
+  padding-left: 30px;
+}
 
 </style>
