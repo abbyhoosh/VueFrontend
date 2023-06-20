@@ -37,20 +37,6 @@ export default {
       }
     },
 
-    async viewArticle(slug) {
-      try {
-        const response = await fetch(`${apiBaseURL}/articles/view/${slug}.json`,
-            {
-              method: 'GET',
-              credentials: 'include',
-              headers: tokenHeader,
-              mode: 'cors'
-            });
-      } catch (e) {
-        console.log(e);
-      }
-    },
-
     async deleteArticle(slug) {
       try {
         const response = await fetch(`${apiBaseURL}/articles/delete/${slug}.json`,

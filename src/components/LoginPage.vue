@@ -1,20 +1,49 @@
 <script>
 import Banner from "@/App.vue";
 import PageHeader from "@/components/PageHeader.vue";
+import {ref} from 'vue'
+
+const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
+const tokenHeader = new Headers();
 
 export default {
-  components: {PageHeader}
+  components: {PageHeader},
+  emits:["loggedIn"],
+  data() {
+    return {
+      newToken: [],
+      user: ref(''),
+      pass: ref('')
+    }
+  },
+  methods: {
+    async loginUser(user, pass) {
+      try {
+        const response = await fetch(`${apiBaseURL}/articles/users/token.json`,
+            {
+              method: 'GET',
+              mode: 'cors',
+              body: JSON.stringify({email: user, password: pass})
+            });
+        this.newToken = await response.json();
+        console.log(this.newToken)
+      } catch (e) {
+        console.log(e);
+      }
+      this.$emit("loggedIn", this.newToken);
+    }
+  }
 }
 </script>
 
 <template>
   <PageHeader header="Login"/>
   <div class="login">
-    <label for="user">Username</label><br>
-    <input type="text" id="user"/><br>
+    <label for="email">Email</label><br>
+    <input v-model="user" type="text" id="email"/><br>
     <label for="pass">Password</label><br>
-    <input type="password" id="pass"/><br>
-    <button>submit</button>
+    <input v-model="pass" type="password" id="pass"/><br>
+    <button @click="loginUser(this.user, this.pass)">submit</button>
   </div>
 </template>
 
@@ -22,17 +51,20 @@ export default {
 label {
   font-size: 25px;
 }
+
 input {
   height: 30px;
   width: 300px;
 }
-.login{
+
+.login {
   display: flex;
   flex-direction: column;
-   align-items: center;
+  align-items: center;
   justify-items: center;
 }
-button{
+
+button {
   align-self: center;
 }
 </style>
