@@ -18,10 +18,11 @@ export default {
   },
   methods: {
     async loginUser(user, pass) {
+      console.log(user);
       try {
-        const response = await fetch(`${apiBaseURL}/articles/users/token.json`,
+        const response = await fetch(`${apiBaseURL}/users/token.json`,
             {
-              method: 'GET',
+              method: 'POST',
               mode: 'cors',
               body: JSON.stringify({email: user, password: pass})
             });
