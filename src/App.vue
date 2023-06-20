@@ -2,6 +2,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Articles from './components/Articles.vue'
+import EditPage from "@/components/EditPage.vue";
 </script>
 
 <script>
@@ -11,12 +12,18 @@ export default {
     return {
       page: 'indexed'
     };
+  },
+  methods: {
+    changePage(change){
+      this.page=change;
+    }
   }
 }
 </script>
 
 <template>
-  <Articles v-if="page === 'indexed'"/>
+  <Articles v-if="page === 'indexed'" @change-page="changePage"/>
+  <EditPage v-if="page=== 'EditPage'"/>
 
 </template>
 

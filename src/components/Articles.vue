@@ -17,9 +17,10 @@ tokenHeader.append('content-type', 'application/json');
 export default {
   data() {
     return {
-      posts: [],
+      posts: []
     };
   },
+  emits: ["changePage"],
   methods: {
     async getAllArticles() {
       try {
@@ -36,9 +37,9 @@ export default {
       }
     },
 
-    async viewArticle(slug){
+    async viewArticle(slug) {
       try {
-        const response = await fetch( `${apiBaseURL}/articles/view/${slug}.json`,
+        const response = await fetch(`${apiBaseURL}/articles/view/${slug}.json`,
             {
               method: 'GET',
               credentials: 'include',
@@ -52,7 +53,7 @@ export default {
 
     async deleteArticle(slug) {
       try {
-        const response = await fetch( `${apiBaseURL}/articles/delete/${slug}.json`,
+        const response = await fetch(`${apiBaseURL}/articles/delete/${slug}.json`,
             {
               method: 'DELETE',
               credentials: 'include',
@@ -84,18 +85,17 @@ export default {
 
     <tr v-for="a in array">
       <td class="title">
-        <a> {{ a.title }} </a>
+        <a @click="$emit('changePage', 'ViewPage')">{{ a.title }}</a>
       </td>
       <td>{{ a.created }}</td>
       <td>
-        <a>Edit </a>
-        <a>Delete</a>
+        <a @click="$emit('changePage', 'EditPage')">Edit </a>
+        <a @click="deleteArticle" class="delete">Delete</a>
       </td>
     </tr>
   </table>
 
 </template>
-
 
 <style>
 table {
@@ -110,6 +110,16 @@ tr {
   height: 40px;
   font-size: 20px;
   text-align: center;
+}
+
+a:hover{
+  color: dimgray;
+  cursor: pointer;
+}
+
+.delete:hover{
+  color: darkred;
+  cursor: pointer;
 }
 
 .title {

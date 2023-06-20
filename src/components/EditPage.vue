@@ -11,7 +11,8 @@ tokenHeader.append('content-type', 'application/json');
 export default {
   components: {Banner, PageHeader},
   methods: {
-    async editArticle(slug) {
+    /**
+     async editArticle(slug) {
       try {
         const response = await fetch(`${apiBaseURL}/articles/edit/${slug}.json`,
             {
@@ -23,7 +24,7 @@ export default {
       } catch (e) {
         console.log(e);
       }
-    }
+    }*/
   }
 }
 </script>
@@ -33,12 +34,50 @@ export default {
   <PageHeader header="Edit"/>
 
   <form>
-    <label for="title">Title</label>
-    <textarea name="title">{{article.title}}</textarea>
-    <label for="body">Body</label>
-    <textarea name="body" rows="3">{{article.body}}</textarea>
-    <label for="tags">Tags</label>
-    <textarea name="tags">{{article.tags}}</textarea>
-    <button @click="editArticle('article.slug')">Save Article</button>
+    <div>
+      <label for="title">Title</label> <br>
+      <textarea name="title">{{article}}</textarea>
+    </div>
+    <div>
+      <label for="body">Body</label><br>
+      <textarea name="body" rows="3" cols="100">{{article}}</textarea>
+    </div>
+    <div>
+      <label for="tags">Tags</label><br>
+      <textarea name="tags">{{article}}</textarea>
+    </div>
+    <button>Save Article</button>
   </form>
 </template>
+
+<style>
+
+label {
+  font-size: 25px;
+}
+
+textarea{
+  resize: none;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+div {
+  grid-column-start: 2;
+  justify-self: start;
+  align-self: start;
+}
+
+button {
+  height: 40px;
+  width: 150px;
+  grid-column-start: 2;
+  place-self: start center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 100px 1fr 1fr .5fr .5fr 2fr;
+  height: 100vh;
+}
+</style>
