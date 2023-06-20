@@ -13,7 +13,7 @@ export default {
 </script>
 <template>
 
-  <button class ="backButton" v-if="page!=='LoginPage'" @click="$emit('changePage', 'indexed')">BACK</button>
+  <button class ="backButton" v-if="page!=='LoginPage'" @click="$emit('changePage', 'Articles')">BACK</button>
   <h1 class="HydraBanner">HydraBlog</h1>
 
 </template>
@@ -29,8 +29,9 @@ export default {
   font-weight: 2000;
   color: whitesmoke;
   background-color: midnightblue;
-  margin: -45px -10px 60px -10px;
-  padding: 20px 0px;
+  margin: -10px -10px 60px -10px;
+  padding-bottom: 20px;
+  padding-top: 30px;
   width: auto;
 }
 .backButton{

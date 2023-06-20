@@ -6,6 +6,7 @@ import EditPage from "@/components/EditPage.vue";
 import AddPage from "@/components/AddPage.vue";
 import ViewPage from "@/components/ViewPage.vue";
 import Banner from "@/components/Banner.vue";
+import LoginPage from "@/components/LoginPage.vue";
 
 </script>
 
@@ -14,7 +15,7 @@ import Banner from "@/components/Banner.vue";
 export default {
   data() {
     return {
-      page: 'indexed'
+      page: 'LoginPage'
     };
   },
   methods: {
@@ -26,8 +27,9 @@ export default {
 </script>
 
 <template>
-  <Banner page="this.page" @change-page="changePage"/>
-  <Articles v-if="page === 'indexed'" @change-page="changePage"/>
+  <Banner :page=this.page @change-page="changePage"/>
+  <LoginPage v-if="page=== 'LoginPage'"/>
+  <Articles v-if="page === 'Articles'" @change-page="changePage"/>
   <EditPage v-if="page=== 'EditPage'"/>
   <AddPage v-if="page==='AddPage'" />
   <ViewPage v-if="page==='ViewPage'"/>
