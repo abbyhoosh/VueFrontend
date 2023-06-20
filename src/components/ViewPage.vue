@@ -11,5 +11,4 @@ export default {
   <p>body</p>
   <p>tag tag tag tag tag tag</p>
   <p>created</p>
-
 </template>

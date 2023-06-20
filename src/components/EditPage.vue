@@ -35,7 +35,7 @@ export default {
   <form>
     <div>
       <label for="title">Title</label> <br>
-      <textarea name="title">{{article}}</textarea>
+      <textarea name="title" cols="100">{{article}}</textarea>
     </div>
     <div>
       <label for="body">Body</label><br>
@@ -43,7 +43,7 @@ export default {
     </div>
     <div>
       <label for="tags">Tags</label><br>
-      <textarea name="tags">{{article}}</textarea>
+      <textarea name="tags" cols="100">{{article}}</textarea>
     </div>
     <button>Save Article</button>
   </form>

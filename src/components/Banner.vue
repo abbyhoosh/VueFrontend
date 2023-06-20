@@ -29,11 +29,12 @@ export default {
   font-weight: 2000;
   color: whitesmoke;
   background-color: midnightblue;
-  margin: -40px -10px 60px -10px;
+  margin: -45px -10px 60px -10px;
   padding: 20px 0px;
   width: auto;
 }
 .backButton{
+  margin: 3px;
   justify-content: left;
   height: 30px;
   width: 100px;

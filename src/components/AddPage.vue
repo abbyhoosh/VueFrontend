@@ -22,12 +22,12 @@ export default {
 </script>
 
 <template>
-  <PageHeader header="Edit"/>
+  <PageHeader header="Add Article"/>
 
   <form>
     <div>
       <label for="title">Title</label> <br>
-      <textarea name="title"></textarea>
+      <textarea name="title" cols="100"></textarea>
     </div>
     <div>
       <label for="body">Body</label><br>
@@ -35,7 +35,7 @@ export default {
     </div>
     <div>
       <label for="tags">Tags</label><br>
-      <textarea name="tags"></textarea>
+      <textarea name="tags" cols="100"></textarea>
     </div>
     <button>Save Article</button>
   </form>
