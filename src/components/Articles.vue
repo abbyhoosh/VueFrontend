@@ -20,7 +20,7 @@ export default {
       posts: [],
     };
   },
-  emits: ["changePage"],
+  emits: ["changePage", "sendSlug"],
   methods: {
     async getAllArticles() {
       try {
@@ -71,7 +71,7 @@ export default {
 
     <tr v-for="a in array">
       <td class="title">
-        <a @click="$emit('changePage', 'ViewPage')">{{ a.title }}</a>
+        <a @click="$emit('changePage', 'ViewPage'); $emit('sendSlug', a.slug);">{{ a.title }}</a>
       </td>
       <td>{{ a.created }}</td>
       <td>

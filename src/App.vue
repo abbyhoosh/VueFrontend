@@ -15,7 +15,8 @@ import LoginPage from "@/components/LoginPage.vue";
 export default {
   data() {
     return {
-      page: 'Articles'
+      page: 'Articles',
+      aSlug: 'temp'
     };
   },
   methods: {
@@ -29,10 +30,10 @@ export default {
 <template>
   <Banner :page=this.page @change-page="changePage"/>
   <LoginPage v-if="page=== 'LoginPage'"/>
-  <Articles v-if="page === 'Articles'" @change-page="changePage"/>
+  <Articles v-if="page === 'Articles'" @change-page="changePage" @send-slug="(s)=> this.aSlug=s"/>
   <EditPage v-if="page=== 'EditPage'"/>
   <AddPage v-if="page==='AddPage'" />
-  <ViewPage v-if="page==='ViewPage'"/>
+  <ViewPage :slug=this.aSlug v-if="page==='ViewPage'"/>
 
 </template>
 
