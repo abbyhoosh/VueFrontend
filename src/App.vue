@@ -3,6 +3,10 @@ import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Articles from './components/Articles.vue'
 import EditPage from "@/components/EditPage.vue";
+import AddPage from "@/components/AddPage.vue";
+import ViewPage from "@/components/ViewPage.vue";
+import Banner from "@/components/Banner.vue";
+
 </script>
 
 <script>
@@ -22,8 +26,11 @@ export default {
 </script>
 
 <template>
+  <Banner page="this.page" @change-page="changePage"/>
   <Articles v-if="page === 'indexed'" @change-page="changePage"/>
   <EditPage v-if="page=== 'EditPage'"/>
+  <AddPage v-if="page==='AddPage'" />
+  <ViewPage v-if="page==='ViewPage'"/>
 
 </template>
 

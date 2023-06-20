@@ -73,8 +73,8 @@ export default {
 </script>
 
 <template>
-  <Banner/>
   <PageHeader header="Articles"/>
+  <u><a class ="add" @click="$emit('changePage', 'AddPage')"> Add Article</a></u>
 
   <table v-for="array in this.posts">
     <tr>
@@ -99,6 +99,7 @@ export default {
 
 <style>
 table {
+  margin-top: 20px;
   width: 100%;
 }
 
@@ -121,10 +122,18 @@ a:hover{
   color: darkred;
   cursor: pointer;
 }
+u:hover{
+  color: dimgray;
+}
 
 .title {
   text-align: left;
   padding-left: 30px;
+}
+.add{
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
 }
 
 </style>

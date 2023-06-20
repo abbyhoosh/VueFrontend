@@ -30,7 +30,6 @@ export default {
 </script>
 
 <template>
-  <Banner/>
   <PageHeader header="Edit"/>
 
   <form>
@@ -40,7 +39,7 @@ export default {
     </div>
     <div>
       <label for="body">Body</label><br>
-      <textarea name="body" rows="3" cols="100">{{article}}</textarea>
+      <textarea name="body" rows="5" cols="100">{{article}}</textarea>
     </div>
     <div>
       <label for="tags">Tags</label><br>

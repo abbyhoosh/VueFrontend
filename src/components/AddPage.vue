@@ -22,16 +22,21 @@ export default {
 </script>
 
 <template>
-  <PageHeader header="Add Article" />
-  <Banner />
+  <PageHeader header="Edit"/>
 
   <form>
-    <label for="title">Title</label>
-    <textarea name="title"></textarea>
-    <label for="body">Body</label>
-    <textarea name="body" rows="3"></textarea>
-    <label for="tags">Tags</label>
-    <textarea name="tags"></textarea>
-    <button @click="addArticle">Save Article</button>
+    <div>
+      <label for="title">Title</label> <br>
+      <textarea name="title"></textarea>
+    </div>
+    <div>
+      <label for="body">Body</label><br>
+      <textarea name="body" rows="5" cols="100"></textarea>
+    </div>
+    <div>
+      <label for="tags">Tags</label><br>
+      <textarea name="tags"></textarea>
+    </div>
+    <button>Save Article</button>
   </form>
 </template>

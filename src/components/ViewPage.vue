@@ -7,9 +7,9 @@ export default {
 </script>
 
 <template>
-  <PageHeader header="{{article.title}}" />
-  <p>{{article.body}}</p>
-  <p>{{article.tags}}</p>
-  <p>{{article.created}}</p>
+  <PageHeader header="title" />
+  <p>body</p>
+  <p>tag tag tag tag tag tag</p>
+  <p>created</p>
 
 </template>
