@@ -17,7 +17,8 @@ tokenHeader.append('content-type', 'application/json');
 export default {
   data() {
     return {
-      posts: []
+      posts: [],
+      test: 'nothing'
     };
   },
   emits: ["changePage"],
@@ -63,6 +64,9 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+    testDel(slug){
+      this.test=slug;
     }
   },
 
@@ -75,6 +79,7 @@ export default {
 <template>
   <PageHeader header="Articles"/>
   <u><a class ="add" @click="$emit('changePage', 'AddPage')"> Add Article</a></u>
+  <p>{{this.test}}</p>
 
   <table v-for="array in this.posts">
     <tr>
@@ -90,7 +95,7 @@ export default {
       <td>{{ a.created }}</td>
       <td>
         <a @click="$emit('changePage', 'EditPage')">Edit </a>
-        <a @click="deleteArticle" class="delete">Delete</a>
+        <a @click="deleteArticle(a.slug)" class="delete">Delete</a>
       </td>
     </tr>
   </table>
