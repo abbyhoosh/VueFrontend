@@ -27,16 +27,16 @@ export default {
   <form>
     <div>
       <label for="title">Title</label> <br>
-      <textarea name="title" cols="100"></textarea>
+      <textarea id="title" cols="100"></textarea>
     </div>
     <div>
       <label for="body">Body</label><br>
-      <textarea name="body" rows="5" cols="100"></textarea>
+      <textarea id="body" rows="5" cols="100"></textarea>
     </div>
     <div>
       <label for="tags">Tags</label><br>
-      <textarea name="tags" cols="100"></textarea>
+      <textarea id="tags" cols="100"></textarea>
     </div>
-    <button>Save Article</button>
+    <button @click="addArticle()">Save Article</button>
   </form>
 </template>
