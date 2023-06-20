@@ -15,6 +15,11 @@ export default {
       required: true
     }
   },
+  data(){
+    return{
+      article: []
+    }
+  },
   methods: {
     async viewArticle(slug) {
       try {
@@ -25,19 +30,33 @@ export default {
               headers: tokenHeader,
               mode: 'cors'
             });
+        this.article= await response.json()
+        console.log(this.article);
       } catch (e) {
         console.log(e);
       }
     },
+  },
+  mounted(){
+    this.viewArticle(this.slug);
   }
 
 }
 </script>
 
 <template>
-  <PageHeader header="title"/>
-  <p>{{slug}}</p>
-  <p>body</p>
-  <p>tag tag tag tag tag tag</p>
-  <p>created</p>
+  <div v-for="a in article">
+    <PageHeader :header="a.title" />
+    <br>
+    <p class="body">{{a.body}}</p>
+    Tags:
+    <a v-for="t in a.tags">{{t.title}}</a>
+    <p>Created: {{a.created}}</p>
+  </div>
 </template>
+
+<style>
+.body{
+  font-size: 20px;
+}
+</style>
