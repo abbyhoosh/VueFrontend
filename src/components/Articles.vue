@@ -75,7 +75,7 @@ export default {
       </td>
       <td>{{ a.created }}</td>
       <td>
-        <a @click="$emit('changePage', 'EditPage')">Edit </a>
+        <a @click="$emit('changePage', 'EditPage'); $emit('sendSlug', a.slug);">Edit </a>
         <a @click="deleteArticle(a.slug)" class="delete">Delete</a>
       </td>
     </tr>

@@ -15,7 +15,7 @@ import LoginPage from "@/components/LoginPage.vue";
 export default {
   data() {
     return {
-      page: 'Articles',
+      page: 'LoginPage',
       aSlug: 'temp'
     };
   },
