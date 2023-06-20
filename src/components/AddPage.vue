@@ -54,6 +54,17 @@ export default {
       <label for="tags">Tags</label><br>
       <textarea v-model="tags" id="tags" cols="100"></textarea>
     </div>
-    <button @click="addArticle(this.title, this.body, this.tags)">Save Article</button>
   </form>
+  <div class="center">
+    <button @click="addArticle(this.title, this.body, this.tags)">Save Article</button>
+  </div>
 </template>
+
+<style>
+form{
+  height: 40vh;
+}
+.center{
+  text-align: center;
+}
+</style>
