@@ -3,13 +3,9 @@ import Banner from "@/App.vue";
 import PageHeader from "@/components/PageHeader.vue";
 import {ref} from 'vue'
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
-const tokenHeader = new Headers();
-const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODczNzMxMDB9.-mimtn4oM94oFgZiLUfQ_UGK6Ow01N3emR4ojKhjwZg';
-tokenHeader.append('Authorization', `Bearer ${token}`);
-tokenHeader.append('content-type', 'application/json');
 export default {
   components: {PageHeader},
-  emits:["loggedIn"],
+  emits:["loggedIn", "changePage"],
   data() {
     return {
       newToken: [],
@@ -38,7 +34,8 @@ export default {
         console.log(e);
       }
       if(this.newToken.success){
-        this.$emit("loggedIn", this.newToken.data.token, "Articles");
+        this.$emit("loggedIn", this.newToken.data.token);
+        this.$emit("changePage", 'Articles')
       }
     }
   }

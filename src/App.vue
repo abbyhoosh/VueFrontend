@@ -16,12 +16,13 @@ export default {
   data() {
     return {
       page: 'LoginPage',
-      aSlug: 'temp'
+      aSlug: '',
+      aToken: ''
     };
   },
   methods: {
-    changePage(change){
-      this.page=change;
+    changePage(change) {
+      this.page = change;
     }
   }
 }
@@ -29,43 +30,12 @@ export default {
 
 <template>
   <Banner :page=this.page @change-page="changePage"/>
-  <LoginPage v-if="page=== 'LoginPage'"/>
-  <Articles v-if="page === 'Articles'" @change-page="changePage" @send-slug="(s)=> this.aSlug=s"/>
+  <LoginPage v-if="page=== 'LoginPage'" @logged-in="t=> this.aToken=t" @change-page="(p)=> this.page=p"/>
+  <Articles v-if="page === 'Articles'" @change-page="changePage" @send-slug="(s)=> this.aSlug = s"/>
   <EditPage v-if="page=== 'EditPage'"/>
-  <AddPage v-if="page==='AddPage'" />
+  <AddPage v-if="page==='AddPage'"/>
   <ViewPage :slug=this.aSlug v-if="page==='ViewPage'"/>
 
 </template>
-
-
-<!--
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style> -->
 
 
