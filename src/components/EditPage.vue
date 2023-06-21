@@ -58,8 +58,8 @@ export default {
       <label for="tags">Tags</label><br>
       <textarea name="tags" cols="100">{{article.tags}}</textarea>
     </div>
-    <button @click="editArticle(article.slug)">Save Article</button>
   </form>
+  <div><button @click="editArticle(article.slug)">Save Article</button></div>
 </template>
 
 <style>
