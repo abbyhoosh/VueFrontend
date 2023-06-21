@@ -30,11 +30,11 @@ export default {
 
 <template>
   <Banner :page=this.page @change-page="changePage"/>
-  <LoginPage v-if="page=== 'LoginPage'" @logged-in="t=> this.aToken=t" @change-page="(p)=> this.page=p"/>
-  <Articles v-if="page === 'Articles'" @change-page="changePage" @send-slug="(s)=> this.aSlug = s"/>
-  <EditPage v-if="page=== 'EditPage'"/>
-  <AddPage v-if="page==='AddPage'"/>
-  <ViewPage :slug=this.aSlug v-if="page==='ViewPage'"/>
+  <LoginPage v-if="page === 'LoginPage'" @logged-in="t=> this.aToken=t" @change-page="changePage"/>
+  <Articles :token=this.aToken v-if="page === 'Articles'" @change-page="changePage" @send-slug="(s)=> this.aSlug = s"/>
+  <EditPage :token=this.aToken v-if="page=== 'EditPage'"/>
+  <AddPage :token=this.aToken v-if="page==='AddPage'"/>
+  <ViewPage :token=this.aToken :slug=this.aSlug v-if="page==='ViewPage'"/>
 
 </template>
 

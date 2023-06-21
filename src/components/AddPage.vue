@@ -5,12 +5,14 @@ import PageHeader from "@/components/PageHeader.vue";
 import {ref} from 'vue'
 
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
-const tokenHeader = new Headers();
-const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODczNzMxMDB9.-mimtn4oM94oFgZiLUfQ_UGK6Ow01N3emR4ojKhjwZg';
-tokenHeader.append('Authorization', `Bearer ${token}`);
-tokenHeader.append('content-type', 'application/json');
 
 export default {
+  props:{
+    token:{
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       title: ref(''),
@@ -26,7 +28,10 @@ export default {
             {
               method: 'POST',
               credentials: 'include',
-              headers: tokenHeader,
+              headers:{
+                'Authorization': `Bearer ${this.token}`,
+                'content-type': 'application/json'
+              },
               mode: 'cors',
               body: JSON.stringify({title: aTitle, body: aBody, Tags: aTags }),
             });

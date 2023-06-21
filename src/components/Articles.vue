@@ -9,12 +9,15 @@ import ArticleRow from "@/components/ArticleRow.vue";
 
 <script>
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
-const tokenHeader = new Headers();
-const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIwLCJleHAiOjE2ODczNzMxMDB9.-mimtn4oM94oFgZiLUfQ_UGK6Ow01N3emR4ojKhjwZg';
-tokenHeader.append('Authorization', `Bearer ${token}`);
-tokenHeader.append('content-type', 'application/json');
+
 
 export default {
+  props:{
+    token:{
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       posts: [],
@@ -28,7 +31,10 @@ export default {
             {
               method: 'GET',
               credentials: 'include',
-              headers: tokenHeader,
+              headers: {
+                'Authorization': `Bearer ${this.token}`,
+                'content-type': 'application/json'
+              },
               mode: 'cors'
             });
         this.posts = await response.json();
@@ -43,7 +49,10 @@ export default {
             {
               method: 'DELETE',
               credentials: 'include',
-              headers: tokenHeader,
+              headers:{
+                'Authorization': `Bearer ${this.token}`,
+                'content-type': 'application/json'
+              },
               mode: 'cors'
             });
       } catch (e) {
