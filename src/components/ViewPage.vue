@@ -18,11 +18,11 @@ export default {
 </script>
 
 <template>
-  <PageHeader :header="article.title"/>
-  <br>
+  <PageHeader :header="article.title"/><br>
   <p class="body">{{ article.body }}</p>
   Tags:
   <a v-for="t in article.tags">{{ t.title }}</a>
+  <p>Author ID: {{article.user_id}}</p>
   <p>Created: {{ article.created }}</p>
 </template>
 
