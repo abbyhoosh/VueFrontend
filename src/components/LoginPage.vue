@@ -1,5 +1,4 @@
 <script>
-import Banner from "@/App.vue";
 import PageHeader from "@/components/PageHeader.vue";
 import {ref} from 'vue'
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';

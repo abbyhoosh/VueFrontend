@@ -23,7 +23,7 @@ export default {
       posts: [],
     };
   },
-  emits: ["changePage", "sendSlug"],
+  emits: ["changePage", "focus"],
   methods: {
     async getAllArticles() {
       try {
@@ -82,11 +82,11 @@ export default {
 
     <tr v-for="a in this.posts">
       <td class="title">
-        <a @click="$emit('changePage', 'ViewPage'); $emit('sendSlug', a.slug);">{{ a.title }}</a>
+        <a @click="$emit('changePage', 'ViewPage'); $emit('focus', a)">{{ a.title }}</a>
       </td>
       <td>{{ a.created }}</td>
       <td>
-        <a @click="$emit('changePage', 'EditPage'); $emit('sendSlug', a.slug);">Edit </a>
+        <a @click="$emit('changePage', 'EditPage'); $emit('focus', a);">Edit </a>
         <a @click="deleteArticle(a.slug)" class="delete">Delete</a>
       </td>
     </tr>

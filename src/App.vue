@@ -12,14 +12,18 @@ export default {
   data() {
     return {
       page: 'LoginPage',
-      aSlug: '',
+      aFocus: 'temp',
       aToken: ''
     };
   },
   methods: {
     changePage(change) {
-      this.page = change;
+      try{this.page = change;
+      }catch (e) {
+        console.log(e);
+      }
     }
+
   }
 }
 </script>
@@ -27,10 +31,10 @@ export default {
 <template>
   <Banner :page=this.page @change-page="changePage"/>
   <LoginPage v-if="page === 'LoginPage'" @logged-in="t=> this.aToken=t" @change-page="changePage"/>
-  <Articles :token=this.aToken v-if="page === 'Articles'" @change-page="changePage" @send-slug="(s)=> this.aSlug = s"/>
-  <EditPage :token=this.aToken v-if="page=== 'EditPage'"/>
+  <Articles :token=this.aToken v-if="page === 'Articles'" @change-page="changePage" @focus="(a)=> this.aFocus = a"/>
+  <ViewPage :token=this.aToken :article="this.aFocus"  v-if="page==='ViewPage'"/>
+  <EditPage :token=this.aToken :article="this.aFocus" v-if="page=== 'EditPage'"/>
   <AddPage :token=this.aToken v-if="page==='AddPage'"/>
-  <ViewPage :token=this.aToken :slug=this.aSlug v-if="page==='ViewPage'"/>
 </template>
 
 
