@@ -6,29 +6,28 @@ const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 
 export default {
   components: {Banner, PageHeader},
-  props:{
-    article:{
+  props: {
+    article: {
       required: true
     },
-    token:{
+    token: {
       type: String,
       required: true
     }
   },
 
-  data(){
-    return{
-    }
+  data() {
+    return {}
   },
   methods: {
 
-     async editArticle(slug) {
+    async editArticle(slug) {
       try {
         const response = await fetch(`${apiBaseURL}/articles/edit/${slug}.json`,
             {
               method: 'POST',
               credentials: 'include',
-              headers:{
+              headers: {
                 'Authorization': `Bearer ${this.token}`,
                 'content-type': 'application/json'
               },
@@ -57,9 +56,9 @@ export default {
     </div>
     <div>
       <label for="tags">Tags</label><br>
-      <textarea name="tags" cols="100">{{article.tags}}</textarea>
+      <textarea name="tags" cols="100" v-for="t in article.tags">{{t.title}}</textarea>
     </div>
-    <button>Save Article</button>
+    <button @click="editArticle(article.slug)">Save Article</button>
   </form>
 </template>
 
@@ -69,11 +68,12 @@ label {
   font-size: 25px;
 }
 
-textarea{
+textarea {
   resize: none;
   margin-top: 20px;
   margin-bottom: 10px;
 }
+
 div {
   grid-column-start: 2;
   justify-self: start;
