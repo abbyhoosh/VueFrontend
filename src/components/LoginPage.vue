@@ -19,7 +19,6 @@ export default {
   },
   methods: {
     async loginUser(user, pass) {
-      console.log(user);
       try {
         const response = await fetch(`${apiBaseURL}/users/token.json`,
             {
@@ -34,11 +33,14 @@ export default {
               credentials: 'include'
             });
         this.newToken = await response.json();
-        console.log(this.newToken)
+       console.log(this.newToken.data);
       } catch (e) {
         console.log(e);
       }
-      this.$emit("loggedIn", this.newToken);
+      if(this.newToken.success){
+        this.$emit("loggedIn", this.newToken);
+      }
+
     }
   }
 }
