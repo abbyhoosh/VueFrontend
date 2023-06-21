@@ -7,9 +7,17 @@ const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 export default {
   components: {Banner, PageHeader},
   props:{
+    article:{
+      required: true
+    },
     token:{
       type: String,
       required: true
+    }
+  },
+
+  data(){
+    return{
     }
   },
   methods: {
@@ -31,6 +39,7 @@ export default {
       }
     }
   }
+
 }
 </script>
 
@@ -40,15 +49,15 @@ export default {
   <form>
     <div>
       <label for="title">Title</label> <br>
-      <textarea name="title" cols="100">{{article}}</textarea>
+      <textarea name="title" cols="100">{{article.title}}</textarea>
     </div>
     <div>
       <label for="body">Body</label><br>
-      <textarea name="body" rows="5" cols="100">{{article}}</textarea>
+      <textarea name="body" rows="5" cols="100">{{ article.body }}</textarea>
     </div>
     <div>
       <label for="tags">Tags</label><br>
-      <textarea name="tags" cols="100">{{article}}</textarea>
+      <textarea name="tags" cols="100">{{article.tags}}</textarea>
     </div>
     <button>Save Article</button>
   </form>
