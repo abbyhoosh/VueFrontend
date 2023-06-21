@@ -38,6 +38,8 @@ export default {
               mode: 'cors'
             });
         this.posts = await response.json();
+        this.posts= this.posts.articles;
+        console.log(this.posts);
       } catch (e) {
         console.log(e);
       }
@@ -71,14 +73,14 @@ export default {
   <PageHeader header="Articles"/>
   <u><a class ="add" @click="$emit('changePage', 'AddPage')"> Add Article</a></u>
 
-  <table v-for="array in this.posts">
+  <table>
     <tr>
       <th class="title">Title</th>
       <th>Created</th>
       <th>Action</th>
     </tr>
 
-    <tr v-for="a in array">
+    <tr v-for="a in this.posts">
       <td class="title">
         <a @click="$emit('changePage', 'ViewPage'); $emit('sendSlug', a.slug);">{{ a.title }}</a>
       </td>

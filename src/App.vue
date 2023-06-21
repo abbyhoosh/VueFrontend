@@ -1,17 +1,13 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 import Articles from './components/Articles.vue'
 import EditPage from "@/components/EditPage.vue";
 import AddPage from "@/components/AddPage.vue";
 import ViewPage from "@/components/ViewPage.vue";
 import Banner from "@/components/Banner.vue";
 import LoginPage from "@/components/LoginPage.vue";
-
 </script>
 
 <script>
-
 export default {
   data() {
     return {
@@ -35,7 +31,6 @@ export default {
   <EditPage :token=this.aToken v-if="page=== 'EditPage'"/>
   <AddPage :token=this.aToken v-if="page==='AddPage'"/>
   <ViewPage :token=this.aToken :slug=this.aSlug v-if="page==='ViewPage'"/>
-
 </template>
 
 
