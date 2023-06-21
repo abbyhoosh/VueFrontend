@@ -39,7 +39,6 @@ export default {
             });
         this.posts = await response.json();
         this.posts= this.posts.articles;
-        console.log(this.posts);
       } catch (e) {
         console.log(e);
       }
@@ -60,6 +59,10 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
+
+    remove(article){
+      this.posts = this.posts.filter((x) => x !== article);
     }
   },
 
@@ -87,7 +90,7 @@ export default {
       <td>{{ a.created }}</td>
       <td>
         <a @click="$emit('changePage', 'EditPage'); $emit('focus', a);">Edit </a>
-        <a @click="deleteArticle(a.slug)" class="delete">Delete</a>
+        <a @click="deleteArticle(a.slug); remove(a)" class="delete">Delete</a>
       </td>
     </tr>
   </table>
