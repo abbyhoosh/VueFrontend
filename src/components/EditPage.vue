@@ -56,7 +56,7 @@ export default {
     </div>
     <div>
       <label for="tags">Tags</label><br>
-      <textarea name="tags" cols="100" v-for="t in article.tags">{{t.title}}</textarea>
+      <textarea name="tags" cols="100">{{article.tags}}</textarea>
     </div>
     <button @click="editArticle(article.slug)">Save Article</button>
   </form>
