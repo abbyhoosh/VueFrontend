@@ -59,7 +59,7 @@ export default {
       <textarea name="tags" cols="100">{{article.tags}}</textarea>
     </div>
   </form>
-  <div><button @click="editArticle(article.slug)">Save Article</button></div>
+  <div class="submit-edit"><button @click="editArticle(article.slug)">Save Article</button></div>
 </template>
 
 <style>
@@ -85,6 +85,11 @@ button {
   width: 150px;
   grid-column-start: 2;
   place-self: start center;
+}
+.submit-edit{
+  display:flex;
+  justify-content: center;
+  width: 100%;
 }
 
 form {
