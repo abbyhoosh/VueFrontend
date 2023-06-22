@@ -6,6 +6,7 @@ const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 
 export default {
   components: {Banner, PageHeader},
+  emits: ["changePage"],
   props: {
     article: {
       required: true
@@ -59,7 +60,7 @@ export default {
       <textarea name="tags" cols="100">{{article.tags}}</textarea>
     </div>
   </form>
-  <div class="submit-edit"><button @click="editArticle(article.slug)">Save Article</button></div>
+  <div class="submit-edit"><button @click="editArticle(article.slug); $emit('changePage','Articles')">Save Article</button></div>
 </template>
 
 <style>

@@ -33,8 +33,8 @@ export default {
   <LoginPage v-if="page === 'LoginPage'" @logged-in="t=> this.aToken=t" @change-page="changePage"/>
   <Articles :token=this.aToken v-if="page === 'Articles'" @change-page="changePage" @focus="(a)=> this.aFocus = a"/>
   <ViewPage :token=this.aToken :article="this.aFocus"  v-if="page==='ViewPage'"/>
-  <EditPage :token=this.aToken :article="this.aFocus" v-if="page=== 'EditPage'"/>
-  <AddPage :token=this.aToken v-if="page==='AddPage'"/>
+  <EditPage :token=this.aToken :article="this.aFocus" v-if="page=== 'EditPage'" @change-page="changePage"/>
+  <AddPage :token=this.aToken v-if="page==='AddPage'" @change-page="changePage"/>
 </template>
 
 
