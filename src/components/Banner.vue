@@ -12,35 +12,55 @@ export default {
 }
 </script>
 <template>
+  <div class="container">
+    <button class="backButton" v-if="page!=='LoginPage'" @click="$emit('changePage', 'Articles')">BACK</button>
+    <h1 class="HydraBanner">HydraBlog</h1>
+  </div>
 
-  <button class ="backButton" v-if="page!=='LoginPage'" @click="$emit('changePage', 'Articles')">BACK</button>
-  <h1 class="HydraBanner">HydraBlog</h1>
 
 </template>
 
 <style>
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: midnightblue;
+  margin: -10px -10px 60px -10px;
+  width: 120%;
+  height: 140px;
 
+}
+.HydraBanner::before{
+  content: '';
+  flex: .55;
+}
 .HydraBanner {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   font-size: 65px;
   font-family: Impact;
+  margin: 0;
   font-weight: 2000;
   color: whitesmoke;
   background-color: midnightblue;
-  margin: -35px -10px 60px -10px;
-  padding-bottom: 20px;
-  padding-top: 30px;
-  width: auto;
+  width: 100%;
 }
-.backButton{
-  margin-bottom: -10px;
-  justify-content: left;
+
+.HydraBanner::after {
+  content: '';
+  flex: 1;
+}
+
+.backButton {
+  align-self: flex-start;
+  margin: 10px;
   height: 30px;
   width: 100px;
 }
-.backButton:hover{
+
+.backButton:hover {
   cursor: pointer;
 }
 </style>
