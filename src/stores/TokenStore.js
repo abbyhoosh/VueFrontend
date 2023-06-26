@@ -5,5 +5,10 @@ export const useTokenStore = defineStore('token', {
         return{
             token: ''
         };
+    },
+    actions: {
+        set(token){
+            this.token = token;
+        }
     }
 })
