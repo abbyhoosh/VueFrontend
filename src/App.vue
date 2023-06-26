@@ -1,10 +1,10 @@
 <script setup>
-import Articles from './components/Articles.vue'
-import EditPage from "@/components/EditPage.vue";
-import AddPage from "@/components/AddPage.vue";
-import ViewPage from "@/components/ViewPage.vue";
+import Articles from './views/Articles.vue'
+import EditPage from "@/views/EditPage.vue";
+import AddPage from "@/views/AddPage.vue";
+import ViewPage from "@/views/ViewPage.vue";
 import Banner from "@/components/Banner.vue";
-import LoginPage from "@/components/LoginPage.vue";
+import LoginPage from "@/views/LoginPage.vue";
 </script>
 
 <script>
