@@ -1,8 +1,6 @@
 <script>
 import PageHeader from "@/components/PageHeader.vue";
 
-const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
-
 export default {
   components: {PageHeader},
   props: {

@@ -1,11 +1,9 @@
 <script>
 import PageHeader from "@/components/PageHeader.vue";
-import Banner from "@/components/Banner.vue";
-
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 
 export default {
-  components: {Banner, PageHeader},
+  components: {PageHeader},
   emits: ["changePage"],
   props: {
     article: {

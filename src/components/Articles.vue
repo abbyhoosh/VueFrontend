@@ -1,9 +1,6 @@
 <script setup>
 
-import Banner from "@/components/Banner.vue";
-import Header from "@/components/PageHeader.vue";
 import PageHeader from "@/components/PageHeader.vue";
-import ArticleRow from "@/components/ArticleRow.vue";
 
 </script>
 
