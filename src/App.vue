@@ -1,14 +1,7 @@
 <script>
-import {useTokenStore} from "@/stores/TokenStore";
 import Banner from "@/components/Banner.vue";
 
 export default {
-  data() {
-    return {
-      tokenStore: useTokenStore(),
-      aFocus: 'temp',
-    };
-  },
   components: {Banner},
 }
 </script>
