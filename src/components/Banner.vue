@@ -1,19 +1,5 @@
-<script setup>
-defineProps({
-  page: {
-    type: String,
-    required: true
-  }
-})
-</script>
-<script>
-export default {
-  emits: ["changePage"],
-}
-</script>
 <template>
   <div class="container">
-    <button class="backButton" v-if="page!=='LoginPage'" @click="$emit('changePage', 'Articles')">BACK</button>
     <h1 class="HydraBanner">HydraBlog</h1>
   </div>
 
@@ -51,16 +37,5 @@ export default {
 .HydraBanner::after {
   content: '';
   flex: 1;
-}
-
-.backButton {
-  align-self: flex-start;
-  margin: 10px;
-  height: 30px;
-  width: 100px;
-}
-
-.backButton:hover {
-  cursor: pointer;
 }
 </style>
