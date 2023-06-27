@@ -1,12 +1,16 @@
 <script>
 import PageHeader from "@/components/PageHeader.vue";
 import {ref} from 'vue'
+import {useTokenStore} from "@/stores/TokenStore";
+
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
+
 export default {
   components: {PageHeader},
   emits:["loggedIn", "changePage"],
   data() {
     return {
+      tokenStore: useTokenStore(),
       newToken: [],
       user: ref(''),
       pass: ref('')
@@ -33,7 +37,7 @@ export default {
         console.log(e);
       }
       if(this.newToken.success){
-        this.$emit("loggedIn", this.newToken.data.token);
+        this.tokenStore.login(this.newToken.data.token)
         this.$emit("changePage", 'Articles')
       }
     }

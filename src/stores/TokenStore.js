@@ -3,12 +3,14 @@ import {defineStore} from "pinia";
 export const useTokenStore = defineStore('token', {
     state: () => {
         return{
-            token: ''
+            token: '',
+            isLoggedIn: false
         };
     },
     actions: {
-        set(token){
+        login(token){
             this.token = token;
+            this.isLoggedIn = true;
         }
     }
 })
