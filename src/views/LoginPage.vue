@@ -7,7 +7,7 @@ const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 
 export default {
   components: {PageHeader},
-  emits:["loggedIn", "changePage"],
+  emits: ["loggedIn", "changePage"],
   data() {
     return {
       tokenStore: useTokenStore(),
@@ -36,9 +36,9 @@ export default {
       } catch (e) {
         console.log(e);
       }
-      if(this.newToken.success){
+      if (this.newToken.success) {
         this.tokenStore.login(this.newToken.data.token)
-        this.$emit("changePage", 'Articles')
+        this.$router.push({name: 'Articles'});
       }
     }
   }
