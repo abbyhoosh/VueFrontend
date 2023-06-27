@@ -33,7 +33,6 @@ export default {
 
 <template>
   <Banner :page=this.page @change-page="changePage"/>
-  {{this.tokenStore.isLoggedIn}}
   <LoginPage v-if="page === 'LoginPage'" @change-page="changePage"/>
   <Articles v-if="page === 'Articles'" @change-page="changePage" @focus="(a)=> this.aFocus = a"/>
   <ViewPage v-if="page==='ViewPage'" :article="this.aFocus"/>
