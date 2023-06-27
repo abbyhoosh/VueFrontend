@@ -1,6 +1,7 @@
 <script>
 import PageHeader from "@/components/PageHeader.vue";
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
+import {useTokenStore} from "@/stores/TokenStore";
 
 export default {
   components: {PageHeader},
@@ -9,14 +10,12 @@ export default {
     article: {
       required: true
     },
-    token: {
-      type: String,
-      required: true
-    }
   },
 
   data() {
-    return {}
+    return {
+      tokenStore: useTokenStore()
+    }
   },
   methods: {
 
@@ -27,7 +26,7 @@ export default {
               method: 'POST',
               credentials: 'include',
               headers: {
-                'Authorization': `Bearer ${this.token}`,
+                'Authorization': `Bearer ${this.tokenStore.token}`,
                 'content-type': 'application/json'
               },
               mode: 'cors'

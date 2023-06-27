@@ -3,18 +3,14 @@
 import Banner from "@/components/Banner.vue";
 import PageHeader from "@/components/PageHeader.vue";
 import {ref} from 'vue'
+import {useTokenStore} from "@/stores/TokenStore";
 
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 
 export default {
-  props:{
-    token:{
-      type: String,
-      required: true
-    }
-  },
   data() {
     return {
+      tokenStore: useTokenStore(),
       title: ref(''),
       body: ref(''),
       tags: ref('')
@@ -29,7 +25,7 @@ export default {
               method: 'POST',
               credentials: 'include',
               headers:{
-                'Authorization': `Bearer ${this.token}`,
+                'Authorization': `Bearer ${this.tokenStore.token}`,
                 'content-type': 'application/json'
               },
               mode: 'cors',
