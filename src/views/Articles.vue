@@ -63,7 +63,7 @@ export default {
 
 <template>
   <PageHeader header="Articles"/>
-  <u><a class ="add" @click="$emit('changePage', 'AddPage')"> Add Article</a></u>
+  <u><router-link class='add' :to="{name: 'AddPage'}"> Add Article</router-link></u>
 
   <table>
     <tr>
