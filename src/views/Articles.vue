@@ -78,7 +78,7 @@ export default {
       </td>
       <td>{{ article.created }}</td>
       <td>
-        <a @click="$emit('changePage', 'EditPage'); $emit('focus', article);">Edit </a>
+        <a @click="this.focusStore.set(article); this.$router.push({name: 'EditPage'})">Edit </a>
         <a @click="deleteArticle(article.slug); remove(article)" class="delete">Delete</a>
       </td>
     </tr>
