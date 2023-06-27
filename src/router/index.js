@@ -6,7 +6,10 @@ const routes = [
     {path: '/', name: 'login', component: LoginPage},
     {path: '/Articles/View/:slug', name: 'ViewPage', component:()=> import('@/views/ViewPage.vue') }
 ]
+
 const router = createRouter({
     history: createWebHistory(),
     routes
 })
+
+export default router;
