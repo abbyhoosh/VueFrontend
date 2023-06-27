@@ -75,5 +75,7 @@ input {
 
 button {
   align-self: center;
+  height: 40px;
+  width: 130px;
 }
 </style>

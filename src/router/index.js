@@ -4,7 +4,8 @@ import LoginPage from "@/views/LoginPage.vue";
 
 const routes = [
     {path: '/', name: 'login', component: LoginPage},
-    {path: '/Articles/View/:slug', name: 'ViewPage', component:()=> import('@/views/ViewPage.vue') }
+    {path: '/Articles', name: 'Articles', component: ()=> import('@/views/Articles.vue')},
+    {path: '/Articles/View/:slug', name: 'ViewPage', component:()=> import('@/views/ViewPage.vue')}
 ]
 
 const router = createRouter({

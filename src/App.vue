@@ -32,12 +32,19 @@ export default {
 </script>
 
 <template>
+
   <Banner :page=this.page @change-page="changePage"/>
+  {{this.tokenStore.token}}<br>
+  {{this.tokenStore.isLoggedIn}}
+  <router-view> </router-view>
+
+  <!--
   <LoginPage v-if="page === 'LoginPage'" @change-page="changePage"/>
   <Articles v-if="page === 'Articles'" @change-page="changePage" @focus="(a)=> this.aFocus = a"/>
   <ViewPage v-if="page==='ViewPage'" :article="this.aFocus"/>
   <EditPage v-if="page=== 'EditPage'" :article="this.aFocus" @change-page="changePage"/>
   <AddPage v-if="page==='AddPage'" @change-page="changePage"/>
+  -->
 </template>
 
 
