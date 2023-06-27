@@ -1,27 +1,24 @@
 <script>
 import PageHeader from "@/components/PageHeader.vue";
+import {useFocusStore} from "@/stores/FocusStore";
 
 export default {
-  components: {PageHeader},
-  props: {
-    article: {
-      required: true
-    },
-    token: {
-      type: String,
-      required: true
+  data(){
+    return{
+      focusStore: useFocusStore(),
     }
   },
+  components: {PageHeader},
 }
 </script>
 
 <template>
-  <PageHeader :header="article.title"/><br>
-  <p class="body">{{ article.body }}</p>
+  <PageHeader :header="this.focusStore.focus.title"/><br>
+  <p class="body">{{ this.focusStore.focus.body }}</p>
   Tags:
-  <a v-for="t in article.tags">{{ t.title }}</a>
-  <p>Author ID: {{article.user_id}}</p>
-  <p>Created: {{ article.created }}</p>
+  <a v-for="tag in this.focusStore.focus.tags">{{ tag.title }}</a>
+  <p>Author ID: {{this.focusStore.focus.user_id}}</p>
+  <p>Created: {{ this.focusStore.focus.created }}</p>
 </template>
 
 <style>

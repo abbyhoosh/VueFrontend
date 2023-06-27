@@ -52,7 +52,7 @@ export default {
 
     remove(article){
       this.posts = this.posts.filter((x) => x !== article);
-    }
+    },
   },
 
   mounted() {
@@ -74,7 +74,7 @@ export default {
 
     <tr v-for="article in this.posts">
       <td class="title">
-        <a @click="$emit('changePage', 'ViewPage'); $emit('focus', article)">{{ article.title }}</a>
+        <a @click= "this.focusStore.set(article); this.$router.push({name: 'ViewPage'})">{{ article.title }}</a>
       </td>
       <td>{{ article.created }}</td>
       <td>
