@@ -2,23 +2,20 @@
 import PageHeader from "@/components/PageHeader.vue";
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 import {useTokenStore} from "@/stores/TokenStore";
+import {useFocusStore} from "@/stores/FocusStore";
 
 export default {
-  components: {PageHeader},
-  emits: ["changePage"],
-  props: {
-    article: {
-      required: true
-    },
-  },
-
   data() {
     return {
-      tokenStore: useTokenStore()
+      tokenStore: useTokenStore(),
+      focusStore: useFocusStore(),
+      aTitle: '',
+      aBody: '',
+      aTags: ''
     }
   },
+  components: {PageHeader},
   methods: {
-
     async editArticle(slug) {
       try {
         const response = await fetch(`${apiBaseURL}/articles/edit/${slug}.json`,
@@ -29,11 +26,13 @@ export default {
                 'Authorization': `Bearer ${this.tokenStore.token}`,
                 'content-type': 'application/json'
               },
+              body: JSON.stringify({title: this.aTitle, body: this.aBody, Tags: this.aTags }),
               mode: 'cors'
             });
       } catch (e) {
         console.log(e);
       }
+      this.$router.push({name: 'Articles'})
     }
   }
 
@@ -46,18 +45,18 @@ export default {
   <form>
     <div>
       <label for="title">Title</label> <br>
-      <textarea name="title" cols="100">{{article.title}}</textarea>
+      <textarea name="title" cols="100">{{this.focusStore.focus.title}}</textarea>
     </div>
     <div>
       <label for="body">Body</label><br>
-      <textarea name="body" rows="5" cols="100">{{ article.body }}</textarea>
+      <textarea name="body" rows="5" cols="100">{{this.focusStore.focus.body}}</textarea>
     </div>
     <div>
       <label for="tags">Tags</label><br>
-      <textarea name="tags" cols="100">{{article.tags}}</textarea>
+      <textarea name="tags" cols="100">{{this.focusStore.focus.tags}}</textarea>
     </div>
   </form>
-  <div class="submit-edit"><button @click="editArticle(article.slug); $emit('changePage','Articles')">Save Article</button></div>
+  <div class="submit-edit"><button @click="editArticle(this.focusStore.focus.slug)">Save Article</button></div>
 </template>
 
 <style>
