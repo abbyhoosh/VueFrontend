@@ -1,5 +1,6 @@
 <script>
 import PageHeader from "@/components/PageHeader.vue";
+
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 import {useTokenStore} from "@/stores/TokenStore";
 import {useFocusStore} from "@/stores/FocusStore";
@@ -9,9 +10,6 @@ export default {
     return {
       tokenStore: useTokenStore(),
       focusStore: useFocusStore(),
-      aTitle: '',
-      aBody: '',
-      aTags: ''
     }
   },
   components: {PageHeader},
@@ -26,7 +24,11 @@ export default {
                 'Authorization': `Bearer ${this.tokenStore.token}`,
                 'content-type': 'application/json'
               },
-              body: JSON.stringify({title: this.aTitle, body: this.aBody, Tags: this.aTags }),
+              body: JSON.stringify({
+                title: this.focusStore.focus.title,
+                body: this.focusStore.focus.body,
+                Tags: this.focusStore.focus.tags
+              }),
               mode: 'cors'
             });
       } catch (e) {
@@ -35,7 +37,6 @@ export default {
       this.$router.push({name: 'Articles'})
     }
   }
-
 }
 </script>
 
@@ -45,18 +46,21 @@ export default {
   <form>
     <div>
       <label for="title">Title</label> <br>
-      <textarea name="title" cols="100">{{this.focusStore.focus.title}}</textarea>
+      <textarea name="title" v-model="this.focusStore.focus.title" cols="100"></textarea>
     </div>
     <div>
       <label for="body">Body</label><br>
-      <textarea name="body" rows="5" cols="100">{{this.focusStore.focus.body}}</textarea>
+      <textarea name="body" v-model="this.focusStore.focus.body" rows="5"
+                cols="100">{{this.focusStore.focus.body}}</textarea>
     </div>
     <div>
       <label for="tags">Tags</label><br>
-      <textarea name="tags" cols="100">{{this.focusStore.focus.tags}}</textarea>
+      <textarea name="tags" v-model="this.focusStore.focus.tags" cols="100">{{this.focusStore.focus.tags}}</textarea>
     </div>
   </form>
-  <div class="submit-edit"><button @click="editArticle(this.focusStore.focus.slug)">Save Article</button></div>
+  <div class="submit-edit">
+    <button @click="editArticle(this.focusStore.focus.slug)">Save Article</button>
+  </div>
 </template>
 
 <style>
@@ -83,8 +87,9 @@ button {
   grid-column-start: 2;
   place-self: start center;
 }
-.submit-edit{
-  display:flex;
+
+.submit-edit {
+  display: flex;
   justify-content: center;
   width: 100%;
 }
