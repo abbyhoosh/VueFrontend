@@ -34,6 +34,7 @@ export default {
       } catch (e) {
         console.log(e);
       }
+      this.$router.push({name: 'Articles'});
     }
   }
 }
@@ -57,7 +58,7 @@ export default {
     </div>
   </form>
   <div class="center">
-    <button @click="addArticle(this.title, this.body, this.tags); $emit('changePage','Articles') ">Save Article</button>
+    <button @click="addArticle(this.title, this.body, this.tags)">Save Article</button>
   </div>
 </template>
 

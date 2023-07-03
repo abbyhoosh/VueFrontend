@@ -1,22 +1,18 @@
-<script setup>
-
-import PageHeader from "@/components/PageHeader.vue";
-
-</script>
-
 <script>
+import PageHeader from "@/components/PageHeader.vue";
 const apiBaseURL = 'https://restfulapi--abbyhoosh.repl.co/proxy/5000';
 import {useTokenStore} from "@/stores/TokenStore";
-
+import {useFocusStore} from "@/stores/FocusStore";
 
 export default {
   data() {
     return {
       tokenStore: useTokenStore(),
+      focusStore: useFocusStore(),
       posts: [],
     };
   },
-  emits: ["changePage", "focus"],
+  components:{PageHeader},
   methods: {
     async getAllArticles() {
       try {
@@ -56,7 +52,7 @@ export default {
 
     remove(article){
       this.posts = this.posts.filter((x) => x !== article);
-    }
+    },
   },
 
   mounted() {
@@ -67,7 +63,7 @@ export default {
 
 <template>
   <PageHeader header="Articles"/>
-  <u><a class ="add" @click="$emit('changePage', 'AddPage')"> Add Article</a></u>
+  <u><router-link class='add' :to="{name: 'AddPage'}"> Add Article</router-link></u>
 
   <table>
     <tr>
@@ -76,14 +72,14 @@ export default {
       <th>Action</th>
     </tr>
 
-    <tr v-for="a in this.posts">
+    <tr v-for="article in this.posts">
       <td class="title">
-        <a @click="$emit('changePage', 'ViewPage'); $emit('focus', a)">{{ a.title }}</a>
+        <a @click= "this.focusStore.set(article); this.$router.push({name: 'ViewPage'})">{{ article.title }}</a>
       </td>
-      <td>{{ a.created }}</td>
+      <td>{{ article.created }}</td>
       <td>
-        <a @click="$emit('changePage', 'EditPage'); $emit('focus', a);">Edit </a>
-        <a @click="deleteArticle(a.slug); remove(a)" class="delete">Delete</a>
+        <a @click="this.focusStore.set(article); this.$router.push({name: 'EditPage'})">Edit </a>
+        <a @click="deleteArticle(article.slug); remove(article)" class="delete">Delete</a>
       </td>
     </tr>
   </table>
