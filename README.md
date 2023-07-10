@@ -34,7 +34,6 @@ flowchart TD
 classDef tags fill:#2F5F8A
 classDef booleans fill:#001561;
 
- subgraph Features
     NewFeature[New: The intial tag of all new features]
     DevReq[Dev Request Meeting]
     DiscussedHold[Discussed - Hold]
@@ -81,8 +80,7 @@ classDef booleans fill:#001561;
     BugsBool-->Active
     ScheduleDeployment-->|OPS scheduled deplpyment for all relevant instance|ReadyForDeployment-->|Feature is devloped and deployed|Closed
 
-end
-subgraph Bugs
+
     NewBug[New: initial tag for a new bug]
     ReadyBug[Ready]
     ActiveBug[Active]
@@ -97,8 +95,8 @@ subgraph Bugs
     BugDeployable-->|Bug is complete and can be pull requested to main|BugClosed
 
     class NewBug,ReadyBug,ActiveBug,TestingBug,BugDeployable,BugClosed tags;
-end
-subgraph Stories
+
+
     NewStory[New: initial tag of a new story]
     StoryRefinement[Refinement]
     StoryReady[Ready]
@@ -113,6 +111,6 @@ subgraph Stories
     StoryTesting-->|Dev tests have finished and story is done|StoryClosed
 
     class NewStory,StoryRefinement,StoryReady,StoryActive,StoryTesting,StoryClosed tags;
-end
+
 
 ```
