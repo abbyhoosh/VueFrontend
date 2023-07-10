@@ -31,8 +31,8 @@ npm run build
 ```mermaid
 %%{init: {'theme':'dark'}}%%
 flowchart TD
-classDef tags fill:#2F5F8A
-classDef booleans fill:#001561;
+classDef tags fill:#7B9FF2
+classDef booleans fill:#4259C3;
 
 NewFeature[New: The intial tag of all new features]
 DevReq[Dev Request Meeting]
@@ -86,7 +86,7 @@ ScheduleDeployment-->|OPS scheduled deplpyment for all relevant instance|ReadyFo
 %%{init: {'theme':'dark'}}%%
 
 flowchart TD
-classDef tags fill:#2F5F8A
+classDef tags fill:#7B9FF2
 
 NewStory[New: initial tag of a new story]
 StoryRefinement[Refinement]
@@ -108,7 +108,7 @@ class NewStory,StoryRefinement,StoryReady,StoryActive,StoryTesting,StoryClosed t
 
 ```mermaid
 flowchart TD
-classDef tags fill:#2F5F8A
+classDef tags fill:#7B9FF2
 
 NewBug[New: initial tag for a new bug]
 ReadyBug[Ready]
