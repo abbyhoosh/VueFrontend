@@ -29,7 +29,6 @@ npm run build
 ```
 ## Feature Workflow
 ```mermaid
-%%{init: {'theme':'dark'}}%%
 flowchart TD
 classDef tags fill:#7B9FF2
 classDef booleans fill:#4259C3;
