@@ -27,7 +27,7 @@ npm run dev
 ```sh
 npm run build
 ```
-
+## Feature Workflow
 ```mermaid
 %%{init: {'theme':'dark'}}%%
 flowchart TD
@@ -80,27 +80,7 @@ BugsBool-->|Feautre is apporbved for deployment <br> OPS will ensure there are n
 BugsBool-->Active
 ScheduleDeployment-->|OPS scheduled deplpyment for all relevant instance|ReadyForDeployment-->|Feature is devloped and deployed|Closed
 ```
-
-```mermaid
-%%{init: {'theme':'dark'}}%%
-flowchart TD
-classDef tags fill:#2F5F8A
-
-NewBug[New: initial tag for a new bug]
-ReadyBug[Ready]
-ActiveBug[Active]
-TestingBug[Testing]
-BugDeployable[Deployable]
-BugClosed[Closed]
-
-NewBug-->|bug is refined and given story points|ReadyBug
-ReadyBug-->|Wrok has begun on a bug|ActiveBug
-ActiveBug-->|Development is finished for the bug|TestingBug
-TestingBug-->|Dev team tested bug and found it deployable|BugDeployable
-BugDeployable-->|Bug is complete and can be pull requested to main|BugClosed
-
-class NewBug,ReadyBug,ActiveBug,TestingBug,BugDeployable,BugClosed tags;
-```
+## Story Workflow
 
 ```mermaid
 %%{init: {'theme':'dark'}}%%
@@ -122,4 +102,27 @@ StoryActive-->|Development is finished for the story|StoryTesting
 StoryTesting-->|Dev tests have finished and story is done|StoryClosed
 
 class NewStory,StoryRefinement,StoryReady,StoryActive,StoryTesting,StoryClosed tags;
+```
+
+## Bug Workflow
+
+```mermaid
+%%{init: {'theme':'dark'}}%%
+flowchart TD
+classDef tags fill:#2F5F8A
+
+NewBug[New: initial tag for a new bug]
+ReadyBug[Ready]
+ActiveBug[Active]
+TestingBug[Testing]
+BugDeployable[Deployable]
+BugClosed[Closed]
+
+NewBug-->|bug is refined and given story points|ReadyBug
+ReadyBug-->|Wrok has begun on a bug|ActiveBug
+ActiveBug-->|Development is finished for the bug|TestingBug
+TestingBug-->|Dev team tested bug and found it deployable|BugDeployable
+BugDeployable-->|Bug is complete and can be pull requested to main|BugClosed
+
+class NewBug,ReadyBug,ActiveBug,TestingBug,BugDeployable,BugClosed tags;
 ```
