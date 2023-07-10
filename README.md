@@ -27,3 +27,11 @@ npm run dev
 ```sh
 npm run build
 ```
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
