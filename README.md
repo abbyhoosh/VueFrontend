@@ -85,7 +85,6 @@ ScheduleDeployment-->|OPS scheduled deplpyment for all relevant instance|ReadyFo
 %%{init: {'theme':'dark'}}%%
 flowchart TD
 classDef tags fill:#2F5F8A
-classDef booleans fill:#001561;
 
 NewBug[New: initial tag for a new bug]
 ReadyBug[Ready]
@@ -104,6 +103,11 @@ class NewBug,ReadyBug,ActiveBug,TestingBug,BugDeployable,BugClosed tags;
 ```
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
+
+flowchart TD
+classDef tags fill:#2F5F8A
+
 NewStory[New: initial tag of a new story]
 StoryRefinement[Refinement]
 StoryReady[Ready]
