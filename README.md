@@ -107,7 +107,6 @@ class NewStory,StoryRefinement,StoryReady,StoryActive,StoryTesting,StoryClosed t
 ## Bug Workflow
 
 ```mermaid
-%%{init: {'theme':'dark'}}%%
 flowchart TD
 classDef tags fill:#2F5F8A
 
