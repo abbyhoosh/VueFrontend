@@ -30,8 +30,7 @@ npm run build
 ## Feature Workflow
 ```mermaid
 flowchart TD
-classDef tags fill:#7B9FF2
-classDef booleans fill:#4259C3;
+classDef booleans fill:#7B9FF2;
 
 NewFeature[New: The intial tag of all new features]
 DevReq[Dev Request Meeting]
@@ -55,7 +54,6 @@ DesignBool{{Does this feature need design work?}}
 DesignApprovalBool{{Does the design need approval?}}
 
 class PrioritizedBool,BugsBool,DesignBool,DesignApprovalBool booleans;
-class NewFeature,DevReq,DiscussedHold,Scoping,Design,PendingApproval,Refinement,Ready,Active,Testing,PendingPR,DesignTesting,OPS,ScheduleDeployment,ReadyForDeployment,Closed tags;
 
 NewFeature-->|Feature needs to be discussed and prioritized for scoping|DevReq
 DevReq-->PrioritizedBool
@@ -85,8 +83,6 @@ ScheduleDeployment-->|OPS scheduled deplpyment for all relevant instance|ReadyFo
 %%{init: {'theme':'dark'}}%%
 
 flowchart TD
-classDef tags fill:#7B9FF2
-
 NewStory[New: initial tag of a new story]
 StoryRefinement[Refinement]
 StoryReady[Ready]
@@ -99,16 +95,12 @@ StoryRefinement-->|Story was broken into tasks during <br> the Dev sprint planni
 StoryReady-->|Work has begun on a story/its subtasks|StoryActive
 StoryActive-->|Development is finished for the story|StoryTesting
 StoryTesting-->|Dev tests have finished and story is done|StoryClosed
-
-class NewStory,StoryRefinement,StoryReady,StoryActive,StoryTesting,StoryClosed tags;
 ```
 
 ## Bug Workflow
 
 ```mermaid
 flowchart TD
-classDef tags fill:#7B9FF2
-
 NewBug[New: initial tag for a new bug]
 ReadyBug[Ready]
 ActiveBug[Active]
@@ -121,6 +113,4 @@ ReadyBug-->|Wrok has begun on a bug|ActiveBug
 ActiveBug-->|Development is finished for the bug|TestingBug
 TestingBug-->|Dev team tested bug and found it deployable|BugDeployable
 BugDeployable-->|Bug is complete and can be pull requested to main|BugClosed
-
-class NewBug,ReadyBug,ActiveBug,TestingBug,BugDeployable,BugClosed tags;
 ```
